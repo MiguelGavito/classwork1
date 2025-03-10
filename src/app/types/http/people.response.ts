@@ -10,7 +10,7 @@ export interface Result {
   email: string;
   login: Login;
   dob: Dob;
-  registered: Dob;
+  registered: Registered;
   phone: string;
   cell: string;
   id: Id;
@@ -80,4 +80,9 @@ export interface Picture {
   large: string;
   medium: string;
   thumbnail: string;
+}
+
+export interface Registered{
+  date: string;
+  age: number;
 }
