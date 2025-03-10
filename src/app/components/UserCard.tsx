@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { User } from "../lib/types";
+import Image from "next/image";
 
 interface Props {
   user: User;
@@ -20,7 +21,14 @@ const UserCard: React.FC<Props> = ({ user }) => {
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md text-center">
-      <img src={user.picture.large} alt="User" className="mx-auto rounded-full mb-4" />
+      <Image
+      src={user.picture.large}
+      alt="User"
+      width={100}
+      height={100}
+      className="mx-auto rounded-full mb-4"
+      priority
+      />
       <h2 className="text-xl font-bold">{infoMap[infoType]}</h2>
       <div className="flex justify-center gap-4 mt-4">
         <button onClick={() => setInfoType("name")}>👤</button>
