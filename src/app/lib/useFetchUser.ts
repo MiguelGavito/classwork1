@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { User } from "./types";
 
-const API_KEY = "D6KN-XIY6-KN7I-BAMY";
+//const API_KEY = "D6KN-XIY6-KN7I-BAMY";
 const API_URL = `https://randomuser.me/api/`;
 
 export function useFetchUser() {
