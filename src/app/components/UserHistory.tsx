@@ -1,4 +1,5 @@
 import { User } from "../lib/types";
+import Image from "next/image";
 
 interface Props {
   history: User[];
@@ -16,7 +17,7 @@ const UserHistory: React.FC<Props> = ({ history, onSelectUser }) => {
             className="flex items-center gap-2 p-2 hover:bg-gray-200 cursor-pointer"
             onClick={() => onSelectUser(user)}
           >
-            <img src={user.picture.thumbnail} alt="User" className="w-8 h-8 rounded-full" />
+            <Image src={user.picture.thumbnail} alt="User" className="w-8 h-8 rounded-full" />
             <span>{user.name.first} {user.name.last}</span>
           </li>
         ))}
