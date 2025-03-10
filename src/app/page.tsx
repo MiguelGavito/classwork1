@@ -1,29 +1,22 @@
-"use client";
-import { useFetchUser } from "./lib/useFetchUser";
-import UserCard from "./components/UserCard";
-import UserHistory from "./components/UserHistory";
+'use client';
+import { usePeopleApi } from "./hooks/usePeopleApi";
 
+export default function Home() {
 
-const Page: React.FC = () => {
-  const { user, history, fetchUser } = useFetchUser();
+  const { currentPerson, personHistory, error, loading, fetchData } = usePeopleApi()
+
+  if (error) return <div>Error loading data</div>; 
 
   return (
-    <div className="flex gap-4 p-8">
-      {/* Historial de usuarios */}
-      <UserHistory history={history} onSelectUser={() => {}} />
-      
-      {/* Tarjeta de usuario y botón de recarga */}
-      <div className="flex flex-col items-center">
-        {user && <UserCard user={user} />}
-        <button
-          onClick={fetchUser}
-          className="mt-4 p-2 bg-blue-500 text-white rounded-lg"
-        >
-          🔄 Obtener Nuevo Usuario
-        </button>
-      </div>
+    <div>
+      <button onClick={fetchData} style={{ position: 'absolute', top: 10, right: 10, backgroundColor: 'blue', color: 'white'  }}>
+        Fetch Data
+      </button>
+      {loading && <div style={{ textAlign: 'center', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>Loading...</div>}
+      <h1>Current Person</h1>
+      <pre>{JSON.stringify(currentPerson, null, 2)}</pre>
+      <h1>Person history</h1>
+      <pre>{JSON.stringify(personHistory, null, 2)}</pre>
     </div>
   );
-};
-
-export default Page;
+}
